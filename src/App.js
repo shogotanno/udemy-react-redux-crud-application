@@ -1,12 +1,29 @@
 import React from 'react';
 
-function App() {
+const App = () => {
+  const profiles = [
+    {name: "Taro", age: 10},
+    {name: "Hanako", age: 5},
+    {name: "NoName"}
+  ]
+
   return (
-    <React.Fragment>
-      <label htmlFor="bar">bar</label>
-      <input type="text" onChange={() => {console.log("I am Clicked!")}} />;
-    </React.Fragment>
+    <div>
+      {
+        profiles.map((profile, index) => {
+          return <User name={profile.name} age={profile.age} key={index} />
+        })
+      }
+    </div>
   )
+}
+
+const User = (props) => {
+  return <div>Hi, I am {props.name}, and {props.age} years old! </div>
+}
+
+User.defaultProps = { //年齢が未入力の場合はデフォルトで記入するように定義できる。
+  age: 1
 }
 
 export default App;
