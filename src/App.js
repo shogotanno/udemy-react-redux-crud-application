@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const App = () => {
   const profiles = [
     {name: "Taro", age: 10},
     {name: "Hanako", age: 5},
-    {name: "NoName"}
+    {name: "NoName", age: 3}
   ]
 
   return (
@@ -22,8 +23,9 @@ const User = (props) => {
   return <div>Hi, I am {props.name}, and {props.age} years old! </div>
 }
 
-User.defaultProps = { //年齢が未入力の場合はデフォルトで記入するように定義できる。
-  age: 1
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired //isRequiredはそのデータを必ず入力されていないとエラーが出る
 }
 
 export default App;
